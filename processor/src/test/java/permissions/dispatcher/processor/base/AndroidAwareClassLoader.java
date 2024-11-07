@@ -35,9 +35,7 @@ final class AndroidAwareClassLoader {
                     .stream()
                     .map(AndroidAwareClassLoader::unsafeToURL)
                     .toArray(URL[]::new);
-
             return new URLClassLoader(urls, ClassLoader.getSystemClassLoader());
-
         } catch (IOException e) {
             throw new RuntimeException(e);
         }
