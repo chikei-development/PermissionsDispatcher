@@ -12,3 +12,7 @@ classpath.cmd:
 .PHONY: clean
 clean:
 	rm classpath.cmd
+
+.PHONY: publish
+publish:
+	gradlew publishToMavenLocal -x signMavenPublication
