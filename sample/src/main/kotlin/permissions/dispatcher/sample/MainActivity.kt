@@ -33,30 +33,30 @@ class MainActivity : AppCompatActivity() {
         onRequestPermissionsResult(requestCode, grantResults)
     }
 
-    @NeedsPermission(Manifest.permission.RECORD_AUDIO)
+    @NeedsPermission(Manifest.permission.CAMERA)
     fun showCamera() {
         // NOTE: Perform action that requires the permission. If this is run by PermissionsDispatcher, the permission will have been granted
-        // supportFragmentManager.beginTransaction()
-        //         .replace(R.id.sample_content_fragment, CameraPreviewFragment.newInstance())
-        //         .addToBackStack("camera")
-        //         .commitAllowingStateLoss()
+        supportFragmentManager.beginTransaction()
+                .replace(R.id.sample_content_fragment, CameraPreviewFragment.newInstance())
+                .addToBackStack("camera")
+                .commitAllowingStateLoss()
     }
 
-    @OnPermissionDenied(Manifest.permission.RECORD_AUDIO)
+    @OnPermissionDenied(Manifest.permission.CAMERA)
     fun onCameraDenied() {
         // NOTE: Deal with a denied permission, e.g. by showing specific UI
         // or disabling certain functionality
         Toast.makeText(this, R.string.permission_camera_denied, Toast.LENGTH_SHORT).show()
     }
 
-    @OnShowRationale(Manifest.permission.RECORD_AUDIO)
+    @OnShowRationale(Manifest.permission.CAMERA)
     fun showRationaleForCamera(request: PermissionRequest) {
         // NOTE: Show a rationale to explain why the permission is needed, e.g. with a dialog.
         // Call proceed() or cancel() on the provided PermissionRequest to continue or abort
         showRationaleDialog(R.string.permission_camera_rationale, request)
     }
 
-    @OnNeverAskAgain(Manifest.permission.RECORD_AUDIO)
+    @OnNeverAskAgain(Manifest.permission.CAMERA)
     fun onCameraNeverAskAgain() {
         Toast.makeText(this, R.string.permission_camera_never_ask_again, Toast.LENGTH_SHORT).show()
     }
